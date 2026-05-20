@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #1b1b1b;
+      }
+
+      canvas {
+        display: block;
+        margin: 0 auto;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="page"></canvas>
+    <script type="module">
+      import * as pdfjsLib from "../vendor/pdf.min.mjs";
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "../vendor/pdf.worker.min.mjs";
+
+      const params = new URLSearchParams(window.location.search);
+      const pageNumber = Number(params.get("page") || "1");
+      const pdf = await pdfjsLib.getDocument("../assets/catalogo-dusk-drop-02.pdf").promise;
+      const page = await pdf.getPage(pageNumber);
+      const viewport = page.getViewport({ scale: 1.4 });
+      const canvas = document.querySelector("#page");
+      canvas.width = Math.ceil(viewport.width);
+      canvas.height = Math.ceil(viewport.height);
+      await page.render({
+        canvasContext: canvas.getContext("2d", { alpha: false }),
+        viewport,
+      }).promise;
+      document.body.dataset.ready = "true";
+      document.body.dataset.pages = String(pdf.numPages);
+    </script>
+  </body>
+</html>
