@@ -238,7 +238,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Off", value: "#f4f0e3" },
@@ -250,7 +250,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Branco", value: "#f8f7ef" },
@@ -262,7 +262,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Preto", value: "#242224" },
@@ -275,7 +275,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Branco", value: "#f8f7ef" },
@@ -287,7 +287,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Preto", value: "#242224" },
@@ -299,7 +299,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 170,00",
     colors: [
       { name: "Branco", value: "#f8f7ef" },
@@ -311,7 +311,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 130,00",
     colors: [
       { name: "Off", value: "#f4f0e3" },
@@ -323,7 +323,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 130,00",
     colors: [
       { name: "Off", value: "#f4f0e3" },
@@ -335,7 +335,7 @@ const productCopy = [
     type: "Blusa",
     collection: "Drop 01",
     available: false,
-    description: "Blusa oversized do Drop 1. Esta peça está indisponível no momento.",
+    description: "Blusa oversized do Drop 1. Esta peça está esgotada no momento.",
     price: "R$ 130,00",
     colors: [
       { name: "Off", value: "#f4f0e3" },
@@ -674,7 +674,7 @@ function buildProductGrid() {
 
   const cards = filteredProducts.map((product) => {
     const item = getProduct(product);
-    const availabilityLabel = item.available ? item.price : "Indisponivel";
+    const availabilityLabel = item.available ? item.price : "Esgotado";
     return `
       <button
         class="product-card ${item.available ? "" : "is-unavailable"}"
@@ -684,7 +684,7 @@ function buildProductGrid() {
       >
         <span class="product-card-media">
           <canvas data-card-canvas="${product}"></canvas>
-          ${item.available ? "" : `<span class="product-card-badge">Indisponivel</span>`}
+          ${item.available ? "" : `<span class="product-card-badge">Esgotado</span>`}
         </span>
         <span class="product-card-title">${item.name}</span>
         <strong>${availabilityLabel}</strong>
@@ -878,10 +878,10 @@ function updateProductInfo(productNumber) {
   selectedSize = sizes.includes(selectedSize) ? selectedSize : "M";
   elements.productCount.textContent = `Peça ${productNumber} de ${total}`;
   elements.productName.textContent = item.name;
-  elements.productPrice.textContent = item.available ? item.price : "Indisponivel";
+  elements.productPrice.textContent = item.available ? item.price : "Esgotado";
   elements.productDescription.textContent = item.description;
   elements.addToCartButton.disabled = !item.available;
-  elements.addToCartButton.textContent = item.available ? "Adicionar ao carrinho" : "Indisponivel";
+  elements.addToCartButton.textContent = item.available ? "Adicionar ao carrinho" : "Esgotado";
   renderOptions(item);
 }
 
